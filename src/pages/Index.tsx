@@ -9,11 +9,21 @@ import Features from '@/components/Features';
 import Testimonials from '@/components/Testimonials';
 import FAQ from '@/components/FAQ';
 import PricingTable from '@/components/PricingTable';
+import SecurityTicker from '@/components/SecurityTicker';
+import ContactForm from '@/components/ContactForm';
 
 const Index = () => {
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar />
+      <Navbar scrollToSection={scrollToSection} />
+      <SecurityTicker />
       
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4">
@@ -26,12 +36,11 @@ const Index = () => {
               </div>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Scan your digital past <br className="hidden md:inline" />
-              <span className="text-gradient">before someone else does.</span>
+              Built on billions of signals. <br className="hidden md:inline" />
+              <span className="text-gradient">Trained to see what you can't.</span>
             </h1>
             <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
-              Discover if your face, username, or identity appears on adult or suspicious websites. 
-              Take control of your digital footprint now.
+              What you don't know can still follow you. Let us trace it.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/scan">
@@ -39,11 +48,14 @@ const Index = () => {
                   Start My Scan
                 </Button>
               </Link>
-              <Link to="#how-it-works">
-                <Button variant="outline" size="lg" className="border-neon-purple/50 text-foreground hover:bg-neon-purple/10">
-                  Learn More
-                </Button>
-              </Link>
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="border-neon-purple/50 text-foreground hover:bg-neon-purple/10"
+                onClick={() => scrollToSection('how-it-works')}
+              >
+                Learn More
+              </Button>
             </div>
             
             <div className="mt-16 max-w-4xl mx-auto relative">
@@ -77,6 +89,7 @@ const Index = () => {
       <Testimonials />
       <PricingTable />
       <FAQ />
+      <ContactForm />
       
       {/* Footer */}
       <footer className="mt-auto py-8 bg-card border-t border-border">

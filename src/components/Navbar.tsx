@@ -4,7 +4,18 @@ import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Shield } from "lucide-react";
 
-const Navbar = () => {
+interface NavbarProps {
+  scrollToSection?: (id: string) => void;
+}
+
+const Navbar = ({ scrollToSection }: NavbarProps) => {
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    if (scrollToSection) {
+      scrollToSection(id);
+    }
+  };
+
   return (
     <header className="w-full border-b border-white/10 backdrop-blur-md bg-background/80 fixed top-0 z-50">
       <div className="container flex items-center justify-between h-16 px-4 md:px-6">
@@ -17,18 +28,34 @@ const Navbar = () => {
           <Link to="/" className="text-sm font-medium text-foreground/80 hover:text-neon-purple transition">
             Home
           </Link>
-          <Link to="/scan" className="text-sm font-medium text-foreground/80 hover:text-neon-purple transition">
-            Start Scan
-          </Link>
-          <Link to="#how-it-works" className="text-sm font-medium text-foreground/80 hover:text-neon-purple transition">
+          <a 
+            href="#how-it-works" 
+            className="text-sm font-medium text-foreground/80 hover:text-neon-purple transition"
+            onClick={(e) => handleNavClick(e, 'how-it-works')}
+          >
             How It Works
-          </Link>
-          <Link to="#pricing" className="text-sm font-medium text-foreground/80 hover:text-neon-purple transition">
+          </a>
+          <a 
+            href="#pricing" 
+            className="text-sm font-medium text-foreground/80 hover:text-neon-purple transition"
+            onClick={(e) => handleNavClick(e, 'pricing')}
+          >
             Pricing
-          </Link>
-          <Link to="#faq" className="text-sm font-medium text-foreground/80 hover:text-neon-purple transition">
+          </a>
+          <a 
+            href="#faq" 
+            className="text-sm font-medium text-foreground/80 hover:text-neon-purple transition"
+            onClick={(e) => handleNavClick(e, 'faq')}
+          >
             FAQ
-          </Link>
+          </a>
+          <a 
+            href="#contact" 
+            className="text-sm font-medium text-foreground/80 hover:text-neon-purple transition"
+            onClick={(e) => handleNavClick(e, 'contact')}
+          >
+            Contact
+          </a>
         </nav>
         
         <div className="flex items-center gap-4">

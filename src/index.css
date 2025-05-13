@@ -5,7 +5,7 @@
 
 @layer base {
   :root {
-    --background: 225 25% 14%;
+    --background: 225 25% 12%;
     --foreground: 240 10% 95%;
 
     --card: 225 25% 16%;
@@ -14,7 +14,7 @@
     --popover: 225 25% 14%;
     --popover-foreground: 240 10% 95%;
 
-    --primary: 260 84% 76%;
+    --primary: 260 86% 78%;
     --primary-foreground: 240 10% 98%;
 
     --secondary: 225 25% 26%;
@@ -45,7 +45,7 @@
     font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
     background-image: radial-gradient(
       circle at 50% 0,
-      rgba(139, 92, 246, 0.15),
+      rgba(146, 100, 255, 0.2),
       rgba(16, 185, 129, 0.05) 90%,
       rgba(26, 31, 44, 0.9) 100%
     );
@@ -77,6 +77,10 @@
   .cyber-grid {
     background-size: 30px 30px;
     @apply bg-cyber-grid;
+  }
+
+  .neon-glow {
+    filter: drop-shadow(0 0 8px rgba(139, 92, 246, 0.8));
   }
 }
 
