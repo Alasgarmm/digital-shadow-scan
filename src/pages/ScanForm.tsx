@@ -10,6 +10,7 @@ import { Shield, ArrowLeft, Loader2 } from "lucide-react";
 import { Link } from 'react-router-dom';
 import FileUpload from '@/components/FileUpload';
 import { toast } from "@/components/ui/sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 const ScanForm = () => {
   const navigate = useNavigate();
@@ -39,13 +40,33 @@ const ScanForm = () => {
     
     setIsSubmitting(true);
     
-    // Here we would normally handle the Supabase integration
-    // For now, simulate a successful submission
-    setTimeout(() => {
+    try {
+      console.log("Submitting scan request:", { name, email, aliases, files });
+      
+      // Upload scan request data to Supabase
+      const { error } = await supabase
+        .from('scan_requests')
+        .insert([
+          { name, email, aliases }
+        ]);
+        
+      if (error) {
+        console.error("Error saving scan request:", error);
+        toast.error("There was a problem submitting your scan request");
+        setIsSubmitting(false);
+        return;
+      }
+      
+      // TODO: File upload would go here if we had storage buckets configured
+      
       toast.success("Scan request submitted successfully!");
-      setIsSubmitting(false);
       navigate('/scan-result');
-    }, 2000);
+    } catch (err) {
+      console.error("Error in submission:", err);
+      toast.error("There was a problem with your submission");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
