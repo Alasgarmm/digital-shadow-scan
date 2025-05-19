@@ -1,4 +1,71 @@
-# Welcome to your Lovable project
+# Digital Shadow Scan
+
+A comprehensive tool for analyzing and monitoring digital footprints.
+
+## Project Structure
+
+```
+digital-shadow-scan/
+├── frontend/           # React frontend application
+│   ├── src/           # Source files
+│   ├── public/        # Static files
+│   └── package.json   # Frontend dependencies
+├── backend/           # Node.js backend server
+│   ├── services/      # Backend services
+│   └── package.json   # Backend dependencies
+└── package.json       # Root package.json for managing both frontend and backend
+```
+
+## Setup Instructions
+
+1. Install dependencies for all parts of the application:
+   ```bash
+   npm run install:all
+   ```
+
+2. Create a `.env` file in the backend directory with the following variables:
+   ```
+   OPENAI_API_KEY=your_openai_api_key
+   SERPAPI_API_KEY=your_serpapi_key
+   ```
+
+3. Start the development servers:
+   ```bash
+   # Start both frontend and backend
+   npm run dev
+
+   # Or start them separately
+   npm run dev:frontend
+   npm run dev:backend
+   ```
+
+## Available Scripts
+
+- `npm run install:all` - Install dependencies for all parts of the application
+- `npm run dev` - Start both frontend and backend in development mode
+- `npm run dev:frontend` - Start only the frontend development server
+- `npm run dev:backend` - Start only the backend development server
+- `npm run build` - Build both frontend and backend
+- `npm run build:frontend` - Build only the frontend
+- `npm run build:backend` - Build only the backend
+
+## Technologies Used
+
+### Frontend
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- Shadcn UI
+- React Router
+- React Query
+
+### Backend
+- Node.js
+- Express
+- OpenAI API
+- SerpAPI
+- CORS
 
 ## Project info
 
@@ -49,16 +116,6 @@ npm run dev
 - Select the "Codespaces" tab.
 - Click on "New codespace" to launch a new Codespace environment.
 - Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
 
 ## How can I deploy this project?
 
