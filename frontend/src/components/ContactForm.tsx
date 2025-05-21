@@ -153,7 +153,7 @@ const ContactForm = () => {
                     <SelectValue placeholder="Select a plan" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="pay-per-scan">Pay-Per-Scan ($7)</SelectItem>
+                    <SelectItem value="pay-per-scan">Pay-Per-Scan ($6.99)</SelectItem>
                     <SelectItem value="personal-basic">Personal Basic ($19/mo)</SelectItem>
                     <SelectItem value="personal-pro">Personal Pro ($49/mo)</SelectItem>
                     <SelectItem value="startup">Startup Tier ($199/mo)</SelectItem>

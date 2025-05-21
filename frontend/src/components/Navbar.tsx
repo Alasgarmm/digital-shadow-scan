@@ -21,7 +21,7 @@ const Navbar = ({ scrollToSection }: NavbarProps) => {
       <div className="container flex items-center justify-between h-16 px-4 md:px-6">
         <Link to="/" className="flex items-center gap-2 text-xl font-bold text-foreground">
           <Shield className="h-6 w-6 text-neon-purple" />
-          <span className="hidden sm:inline">Past Scanner</span>
+          <span className="hidden sm:inline">Vault Past</span>
         </Link>
         
         <nav className="hidden md:flex items-center gap-6">

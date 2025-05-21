@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
@@ -97,10 +96,10 @@ const Index = () => {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center gap-2 mb-4 md:mb-0">
               <Shield className="h-5 w-5 text-neon-purple" />
-              <span className="font-bold">Past Scanner</span>
+              <span className="font-bold">Vault Past</span>
             </div>
             <div className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} Past Scanner. All rights reserved.
+              © {new Date().getFullYear()} Vault Past. All rights reserved.
             </div>
           </div>
         </div>

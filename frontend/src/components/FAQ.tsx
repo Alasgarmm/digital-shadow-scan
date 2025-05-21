@@ -1,3 +1,4 @@
+
 import React from 'react';
 import {
   Accordion,
@@ -9,7 +10,7 @@ import {
 const faqItems = [
   {
     question: "Is this legal?",
-    answer: "Past Scanner uses advanced AI and proprietary scanning logic to analyze billions of data points across images, profiles, and online mentions — including places you'd never think to check. Our system finds connections that typical search engines miss, giving you a clear, expert-level view of your digital exposure."
+    answer: "Vault Past uses advanced AI and proprietary scanning logic to analyze billions of data points across images, profiles, and online mentions — including places you'd never think to check. Our system finds connections that typical search engines miss, giving you a clear, expert-level view of your digital exposure."
   },
   {
     question: "Do you store my data?",
@@ -29,7 +30,7 @@ const faqItems = [
   },
   {
     question: "Can I use this to scan someone else?",
-    answer: "No. Past Scanner is designed for personal use only. Scanning others without their explicit consent may be illegal in many jurisdictions and violates our Terms of Service."
+    answer: "No. Vault Past is designed for personal use only. Scanning others without their explicit consent may be illegal in many jurisdictions and violates our Terms of Service."
   }
 ];
 
