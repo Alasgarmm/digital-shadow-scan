@@ -41,10 +41,8 @@ app.get('/api/search', async (req, res) => {
 });
 
 app.post('/api/create-payment-session', async (req, res) => {
-
   try {
     const { amount } = req.body;
-
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
@@ -59,8 +57,8 @@ app.post('/api/create-payment-session', async (req, res) => {
         quantity: 1,
       }],
       mode: 'payment',
-      success_url: 'https://www.violamed.com/',
-      cancel_url: 'https://www.violamed.com/',
+      success_url: 'http://localhost:8080/scan-result',
+      cancel_url: 'http://localhost:8080/scan',
     });
 
     res.json({ sessionId: session.id });
@@ -69,8 +67,6 @@ app.post('/api/create-payment-session', async (req, res) => {
     res.status(500).json({ error: "Failed to create payment session" });
   }
 });
-
-
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
