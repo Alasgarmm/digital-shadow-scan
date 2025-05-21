@@ -12,7 +12,7 @@ import { toast } from "@/components/ui/sonner";
 import { stripePromise } from "@/integrations/stripe/client";
 import { supabase } from '../integrations/supabase/client.ts';
 
-const SCAN_PRICE = 700; // $7.00 in cents
+const SCAN_PRICE = 699; // $6.99 in cents
 
 const ScanForm = () => {
   const navigate = useNavigate();

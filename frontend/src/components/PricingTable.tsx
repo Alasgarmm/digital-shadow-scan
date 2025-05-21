@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -10,7 +9,7 @@ import { Badge } from '@/components/ui/badge';
 const b2cPricingPlans = [
   {
     name: "Pay-Per-Scan",
-    price: "$7",
+    price: "$6.99",
     description: "Perfect for a quick check of your digital footprint",
     features: [
       "1 complete scan",
@@ -201,13 +200,13 @@ const PricingTable = () => {
                       </li>
                     ))}
                   </ul>
-                  <Link to={plan.buttonLink} className="mt-auto">
+                  <a href="#contact" className="mt-auto">
                     <Button 
                       className={`w-full ${plan.highlighted ? 'bg-neon-purple hover:bg-neon-purple/90' : 'bg-secondary hover:bg-secondary/90'}`}
                     >
                       {plan.buttonText}
                     </Button>
-                  </Link>
+                  </a>
                 </div>
               ))}
             </div>
@@ -218,11 +217,11 @@ const PricingTable = () => {
           <p className="text-muted-foreground mb-4">
             Need a custom solution for your organization?
           </p>
-          <Link to="#contact">
+          <a href="#contact">
             <Button variant="outline" className="border-neon-purple/50 text-neon-purple hover:bg-neon-purple/10">
               Contact our sales team
             </Button>
-          </Link>
+          </a>
         </div>
       </div>
     </section>

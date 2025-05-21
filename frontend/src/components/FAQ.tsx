@@ -1,4 +1,3 @@
-
 import React from 'react';
 import {
   Accordion,
@@ -10,7 +9,7 @@ import {
 const faqItems = [
   {
     question: "Is this legal?",
-    answer: "It's not about what's public — it's about what's possible. Past Scanner uses advanced AI and proprietary scanning logic to analyze billions of data points across images, profiles, and online mentions — including places you'd never think to check. Our system finds connections that typical search engines miss, giving you a clear, expert-level view of your digital exposure."
+    answer: "Past Scanner uses advanced AI and proprietary scanning logic to analyze billions of data points across images, profiles, and online mentions — including places you'd never think to check. Our system finds connections that typical search engines miss, giving you a clear, expert-level view of your digital exposure."
   },
   {
     question: "Do you store my data?",
