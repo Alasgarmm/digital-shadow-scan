@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import FileUpload from '@/components/FileUpload';
 import { toast } from "@/components/ui/sonner";
 import { stripePromise } from "@/integrations/stripe/client";
+import { supabase } from '../integrations/supabase/client.ts';
 
 const SCAN_PRICE = 700; // $7.00 in cents
 
@@ -42,6 +43,17 @@ const ScanForm = () => {
     setIsSubmitting(true);
 
     try {
+        const {error: supabaseError} = await supabase.from('scan_requests').insert({
+        name,
+        email,
+        aliases,
+        amount: SCAN_PRICE,
+      });
+
+      if (supabaseError) {
+        throw supabaseError;
+      }
+
       // Create a payment session
       const response = await fetch('http://localhost:3001/api/create-payment-session', {
         method: 'POST',

@@ -30,7 +30,6 @@ const ScanResult = () => {
   useEffect(() => {
     const fetchResults = async () => {
       try {
-        // In a real app, you would get the name from the location state or query params
         const name = "John Doe"; // Replace with actual name
         const results = await searchPerson(name);
         // setSearchResults(results);
