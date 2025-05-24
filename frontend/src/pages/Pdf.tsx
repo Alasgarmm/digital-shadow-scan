@@ -254,8 +254,14 @@ const PDFReport = ({ data }: { data: any }) => {
             {data.aliases.length === 0 ? (
               <Text style={styles.noAliasText}>No aliases were identified during the analysis</Text>
             ) : (
-              data.aliases.map((alias: string, index: number) => (
-                <Text key={index} style={styles.aliasItem}>• {alias}</Text>
+              data.aliases.map((aliasObj: any, index: number) => (
+                <View key={index} style={{ marginBottom: 4 }}>
+                  <Text style={styles.aliasItem}>• {aliasObj.alias}</Text>
+                  <Text style={styles.text}>Profiles: {aliasObj.foundProfiles?.join(', ')}</Text>
+                  <Text style={styles.text}>Privacy Risk: {aliasObj.privacyRisk.traceabilityRisk}</Text>
+                  <Text style={styles.text}>Privacy Risk: {aliasObj.privacyRisk.notes}</Text>
+
+                </View>
               ))
             )}
           </View>
@@ -286,15 +292,6 @@ const PDFReport = ({ data }: { data: any }) => {
                 )}
               </View>
 
-              <View style={styles.privacyRiskSection}>
-                <Text style={styles.privacyRiskTitle}>🔒 Privacy Risk Assessment</Text>
-                <Text style={styles.privacyRiskItem}>
-                  Traceability Level: {img.privacyRisk.traceabilityRisk}
-                </Text>
-                <Text style={styles.privacyRiskItem}>
-                  Analysis Notes: {img.privacyRisk.notes}
-                </Text>
-              </View>
             </View>
           ))}
         </View>

@@ -32,7 +32,7 @@ app.post('/api/search', upload.array('files'), async (req, res) => {
   try {
     // Extract form data
     const { name, email, consent } = req.body;
-    const aliases = JSON.parse(req.body.aliases || '[]');
+    const aliases =req.body.aliases || '[]';
     const files = req.files || [];
 
     // Call OpenAI for analysis

@@ -7,6 +7,7 @@ import { generatePDF } from "@/services/pdfService";
 import { useForm } from '../context/FormContext.tsx';
 import PDFReport from './Pdf.tsx';
 import { pdf } from '@react-pdf/renderer';
+import { retrieveStoredFormData } from '../utils/localStorage.ts';
 
 const getRiskColor = (score: number) => {
   if (score < 30) return "text-success bg-success/20";
@@ -32,14 +33,19 @@ const ScanResult = () => {
     const fetchResults = async () => {
       try {
         const data:FormData = new FormData();
-
-        formData.files.forEach((file) => {
+        const localStorageData =retrieveStoredFormData();
+        localStorageData.files.forEach((file) => {
           data.append("files", file); // backend should expect `files` as array
         });
+
+        data.append("name", localStorageData.name);
+        data.append("aliases", localStorageData.aliases);
+        data.append("consent", localStorageData.consent);
         const result = await searchPerson(data);
         const resultData = JSON.parse(result.data);
         console.log("Search Result Data:", resultData);
         console.log("Search Results:", data);
+        console.log("Search Result:", resultData);
         await generateAndDownloadPDF(resultData);
 
         // setSearchResults(results);
