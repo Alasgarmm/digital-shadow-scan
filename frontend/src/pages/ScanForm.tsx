@@ -1,20 +1,21 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { Shield, ArrowLeft, Loader2 } from "lucide-react";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import FileUpload from '@/components/FileUpload';
 import { toast } from "@/components/ui/sonner";
 import { stripePromise } from "@/integrations/stripe/client";
 import { supabase } from '../integrations/supabase/client.ts';
+import { useForm } from '../context/FormContext.tsx';
 
-const SCAN_PRICE = 699; // $6.99 in cents
+const SCAN_PRICE = 699;
 
 const ScanForm = () => {
+  const {  setFormData,formData } = useForm();
   const navigate = useNavigate();
 
   const [name, setName] = useState('');
@@ -32,6 +33,14 @@ const ScanForm = () => {
       toast.error("Please fill in all fields and provide at least one image");
       return;
     }
+
+    console.log("Submitting form with data:", {
+      name,
+      email,
+      aliases,
+      files,
+      consent,
+    });
 
     // Email validation
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -53,6 +62,17 @@ const ScanForm = () => {
       if (supabaseError) {
         throw supabaseError;
       }
+
+      setFormData({
+        name,
+        email,
+        aliases: aliases.split('\n'),
+        consent,
+        files,
+      });
+
+      console.log("Form data set in context:",formData );
+
 
       // Create a payment session
       const response = await fetch('http://localhost:3001/api/create-payment-session', {

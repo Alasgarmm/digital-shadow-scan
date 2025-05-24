@@ -8,12 +8,14 @@ import Index from "./pages/Index";
 import ScanForm from "./pages/ScanForm";
 import ScanResult from "./pages/ScanResult";
 import NotFound from "./pages/NotFound";
+import { FormProvider } from "./context/FormContext.tsx";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
+    <FormProvider>
       <Toaster />
       <Sonner />
       <BrowserRouter>
@@ -25,6 +27,8 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
+    </FormProvider>
+
     </TooltipProvider>
   </QueryClientProvider>
 );
